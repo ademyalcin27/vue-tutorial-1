@@ -1,0 +1,63 @@
+{
+    "models": {
+      "Campaign": {
+        "translation": "Kampanya | Kampanyalar",
+        "properties": {
+          "image": "Kampanya Görseli"
+        }
+      },
+      "Promotion": {
+        "translation": "Promosyon | Promosyonlar",
+        "properties": {
+          "discount": "İndirim"
+        }
+      }
+    },
+    "common": {
+      "properties": {
+        "id": "ID",
+        "name": "Adı",
+        "title": "Başlık",
+        "isActive": "Aktiflik",
+        "url": "URL",
+        "slug": "Slug",
+        "promotionCode": "Promosyon Kodu",
+        "startDate": "Başlangıç Tarihi",
+        "endDate": "Bitiş Tarihi",
+        "createdAt": "Oluşturulma Tarihi",
+        "updatedAt": "Güncellenme Tarihi",
+        "firstName": "Ad",
+        "lastName": "Soyad",
+        "phone": "Telefon",
+        "phoneCode": "Alan Kodu",
+        "choseFile": "Dosya Seçiniz",
+        "description": "Açıklama"
+      },
+      "actions": "Aksiyonlar",
+      "listing": "Listesi",
+      "details": "Detayları",
+      "loading": "Yükleniyor",
+      "noResult": "Sonuç Bulunamadı",
+      "deleteConfirmation": "Silmek istediğinize emin misiniz?",
+      "created": "{resource} başarıyla oluşturuldu",
+      "buttons": {
+        "cancel": "İptal",
+        "update": "Güncelle",
+        "save": "Kaydet",
+        "add": "Ekle",
+        "ok": "Tamam",
+        "no": "Hayır",
+        "yes": "Evet",
+        "close": "Kapat",
+        "showContent": "İçeriği göster",
+        "hideContent": "İçeriği Gizle",
+        "back": "Geri"
+      }
+    },
+    "CRUDPageTitles": {
+      "list": "{resource} Listesi",
+      "create": "{resource} Oluştur",
+      "update": "{resource} Güncelle"
+    }
+  }
+  

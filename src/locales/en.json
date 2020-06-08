@@ -1,0 +1,61 @@
+{
+  "models": {
+    "Campaign": {
+      "translation": "Campaign | Campaigns",
+      "properties": {
+        "image": "Campaign Image"
+      }
+    },
+    "Promotion": {
+      "translation": "Promotion | Promotions",
+      "properties": {
+        "discount": "Discount"
+      }
+    }
+  },
+  "common": {
+    "properties": {
+      "id": "ID",
+      "name": "Name",
+      "title": "Title",
+      "isActive": "Active Status",
+      "url": "URL",
+      "slug": "Slug",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "createdAt": "Created Date",
+      "updatedAt": "Updated Date",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone": "Phone",
+      "phoneCode": "Phone Code",
+      "choseFile": "Choose File",
+      "description": "Description"
+    },
+    "actions": "Actions",
+    "listing": "Lists",
+    "details": "Details",
+    "loading": "Loading",
+    "noResult": "No Result",
+    "deleteConfirmation": "Are you sure delete this?",
+    "created": "{resource} has been created successfully",
+    "buttons": {
+      "cancel": "Cancel",
+      "update": "Update",
+      "save": "Save",
+      "add": "Add",
+      "ok": "OK",
+      "no": "No",
+      "yes": "Yes",
+      "close": "Close",
+      "showContent": "Show more",
+      "hideContent": "Show less",
+      "back": "Back"
+    }
+  },
+  "CRUDPageTitles": {
+    "list": "{resource} Detail",
+    "create": "{resource} Create",
+    "update": "{resource} Update"
+  }
+}

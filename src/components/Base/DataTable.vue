@@ -22,12 +22,34 @@
       </v-row>
     </v-card-title>
     <v-data-table :headers="headers" :items="data" :search="search">
+      <template v-if="data.length" v-slot:body="{ items }">
+        <tbody>
+          <tr v-for="item in items" :key="item.id">
+            <td
+              v-for="{ text, type, value } in headers"
+              :key="value"
+              :data-label="text"
+            >
+              <TextView :data="item[value]" v-if="type==='text'" />
+              <NumberView :data="item[value]" v-if="type==='number'" />
+              <BooleanView :data="item[value]" v-if="type==='boolean'" />
+              <DateView :data="item[value]" v-if="type==='date'" />
+            </td>
+          </tr>
+        </tbody>
+      </template>
     </v-data-table>
   </v-card>
 </template>
 
 <script>
 export default {
+  components: {
+    TextView: () => import('@/components/DataTableViews/TextView.vue'),
+    NumberView: () => import('@/components/DataTableViews/NumberView.vue'),
+    BooleanView: () => import('@/components/DataTableViews/BooleanView.vue'),
+    DateView: () => import('@/components/DataTableViews/DateView.vue'),
+  },
   data() {
     return {
       search: null,

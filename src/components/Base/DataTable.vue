@@ -25,15 +25,44 @@
       <template v-if="data.length" v-slot:body="{ items }">
         <tbody>
           <tr v-for="item in items" :key="item.id">
-            <td
-              v-for="{ text, type, value } in headers"
-              :key="value"
-              :data-label="text"
-            >
+            <td v-for="{ text, type, value } in dataHeaders" :key="value" :data-label="text">
               <TextView :data="item[value]" v-if="type==='text'" />
               <NumberView :data="item[value]" v-if="type==='number'" />
               <BooleanView :data="item[value]" v-if="type==='boolean'" />
               <DateView :data="item[value]" v-if="type==='date'" />
+            </td>
+            <td data-label="actions" v-if="isVisibleActions" style="whiteSpace:nowrap">
+              <div>
+                <v-btn
+                  v-if="actions.includes('details')"
+                  :to="`${url}/${item.id}`"
+                  fab
+                  x-small
+                  icon
+                  color="secondary"
+                >
+                  <v-icon>mdi-eye</v-icon>
+                </v-btn>
+                <v-btn
+                  v-if="actions.includes('update')"
+                  :to="`${url}/${item.id}/edit`"
+                  fab
+                  x-small
+                  icon
+                  color="secondary"
+                >
+                  <v-icon>mdi-pencil</v-icon>
+                </v-btn>
+                <v-btn
+                  v-if="actions.includes('delete')"
+                  fab
+                  x-small
+                  icon
+                  color="secondary"
+                >
+                  <v-icon>mdi-delete</v-icon>
+                </v-btn>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -44,6 +73,12 @@
 
 <script>
 export default {
+  props: {
+    dataHeaders: Array,
+    data: Array,
+    actions: Array,
+    url: String,
+  },
   components: {
     TextView: () => import('@/components/DataTableViews/TextView.vue'),
     NumberView: () => import('@/components/DataTableViews/NumberView.vue'),
@@ -53,57 +88,19 @@ export default {
   data() {
     return {
       search: null,
-      headers: [
-        { type: 'text', text: 'ID', value: 'id' },
-        { type: 'number', text: 'Promotion', value: 'promotionId' },
-        { type: 'text', text: 'Name', value: 'name' },
-        { type: 'text', text: 'Slug', value: 'slug' },
-        { type: 'text', text: 'Description', value: 'description' },
-        { type: 'date', text: 'Start Date', value: 'startDate' },
-      ],
-      data: [
-        {
-          id: '1',
-          promotionId: 1,
-          name: 'name 1',
-          slug: 'slug 1',
-          description: 'description 1',
-          image: 'image 1',
-          startDate: 1591050772,
-          endDate: 1591050772,
-        },
-        {
-          id: '2',
-          promotionId: null,
-          name: 'name 2',
-          slug: 'slug 2',
-          description: 'description 2',
-          image: 'image 2',
-          startDate: 1591050712,
-          endDate: 1591050712,
-        },
-        {
-          id: '3',
-          promotionId: null,
-          name: 'name 3',
-          slug: 'slug 3',
-          description: 'description 3',
-          image: 'image 3',
-          startDate: 1591050821,
-          endDate: 1591050821,
-        },
-        {
-          id: '4',
-          promotionId: null,
-          name: 'name 4',
-          slug: 'slug 4',
-          description: 'description 4',
-          image: 'image 4',
-          startDate: 1591050761,
-          endDate: 1591050761,
-        },
-      ],
+      availabeActions: ['details', 'update', 'delete'],
     };
+  },
+  computed: {
+    isVisibleActions() {
+      return this.actions.some((item) => this.availabeActions.includes(item));
+    },
+    headers() {
+      if (this.isVisibleActions) {
+        return [...this.dataHeaders, { text: 'Actions', value: 'actions', sortable: false }];
+      }
+      return this.dataHeaders;
+    },
   },
 };
 </script>

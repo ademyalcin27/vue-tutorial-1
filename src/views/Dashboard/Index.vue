@@ -1,6 +1,12 @@
 <template>
   <div>
-    <DataTable :data-headers="headers" :data="data" :actions="actions" url="campaign" />
+    <DataTable
+      :data-headers="headers"
+      :data="data"
+      :actions="actions"
+      url="campaign"
+      @delete="deleteItem"
+    />
   </div>
 </template>
 
@@ -63,6 +69,11 @@ export default {
       ],
       actions: ['details', 'update', 'delete'],
     };
+  },
+  methods: {
+    deleteItem(deleteItemId) {
+      this.data = this.data.filter(({ id }) => id !== deleteItemId);
+    },
   },
 };
 </script>

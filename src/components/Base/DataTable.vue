@@ -139,3 +139,42 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.theme--light.v-data-table thead tr th {
+  white-space: nowrap;
+}
+@media screen and (max-width: 768px) {
+  table {
+    tr {
+      max-width: 100%;
+      position: relative;
+      display: block;
+      border-bottom: 1px solid #cac3c3;
+      td {
+        justify-content: space-between;
+        display: flex;
+        width: 100%;
+        border-bottom: none !important;
+        height: auto;
+        padding: 10px;
+        color: rgba(0, 0, 0, 0.6);
+        &:before {
+          content: attr(data-label);
+          padding-right: 0.5em;
+          text-align: left;
+          display: block;
+          color: rgb(0, 0, 0);
+        }
+      }
+    }
+  }
+  .v-datatable__actions__select {
+    width: 50%;
+    margin: 0px;
+    justify-content: flex-start;
+  }
+  .theme--light.v-table tbody tr:hover:not(.v-datatable__expand-row) {
+    background: transparent;
+  }
+}
+</style>

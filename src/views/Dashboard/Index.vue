@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import translateModelProperty from '@/utils/helper';
 import Campaign from '@/api/Campaign';
 
 export default {
@@ -19,17 +20,18 @@ export default {
   },
   data() {
     return {
-      headers: [
-        { type: 'text', text: 'ID', value: 'id' },
-        { type: 'number', text: 'Promotion', value: 'promotionId' },
-        { type: 'text', text: 'Name', value: 'name' },
-        { type: 'text', text: 'Slug', value: 'slug' },
-        { type: 'text', text: 'Description', value: 'description' },
-        { type: 'date', text: 'Start Date', value: 'startDate' },
-      ],
       data: [],
       actions: ['details', 'update', 'delete'],
     };
+  },
+  computed: {
+    headers() {
+      return Campaign.fields.map(({ name, ...rest }) => ({
+        ...rest,
+        text: translateModelProperty(Campaign.name, name),
+        value: name,
+      }));
+    },
   },
   methods: {
     deleteItem(deleteItemId) {

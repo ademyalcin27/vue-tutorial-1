@@ -13,4 +13,8 @@ export default class CRUDResource {
     const resources = await API.get(this.endpoint);
     return resources.map((resource) => new this(resource));
   }
+
+  static getListFields() {
+    return this.fields.filter(({ hideFromList }) => !hideFromList);
+  }
 }

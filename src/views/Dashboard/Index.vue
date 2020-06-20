@@ -28,7 +28,7 @@ export default {
       return Campaign.operations;
     },
     headers() {
-      return Campaign.fields.map(({ name, ...rest }) => ({
+      return Campaign.getListFields().map(({ name, ...rest }) => ({
         ...rest,
         text: translateModelProperty(Campaign.name, name),
         value: name,

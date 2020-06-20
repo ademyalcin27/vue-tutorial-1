@@ -7,7 +7,7 @@
             Title
           </v-col>
           <v-col cols="4" class="text-right">
-            <v-btn color="secondary" to="/">
+            <v-btn color="secondary" to="/" v-if="actions.includes('create')">
               Add
             </v-btn>
           </v-col>

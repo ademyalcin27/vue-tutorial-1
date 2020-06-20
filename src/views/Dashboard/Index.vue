@@ -21,10 +21,12 @@ export default {
   data() {
     return {
       data: [],
-      actions: ['details', 'update', 'delete'],
     };
   },
   computed: {
+    actions() {
+      return Campaign.operations;
+    },
     headers() {
       return Campaign.fields.map(({ name, ...rest }) => ({
         ...rest,

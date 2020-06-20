@@ -1,6 +1,8 @@
 import API from '@/utils/api';
 
 export default class CRUDResource {
+  static operations = ['list', 'details', 'create', 'delete', 'update'];
+
   constructor(fields, data) {
     fields.forEach(({ name }) => {
       this[name] = data[name];

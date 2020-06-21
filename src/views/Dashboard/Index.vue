@@ -41,7 +41,8 @@ export default {
     },
   },
   async created() {
-    this.data = await Campaign.getAll();
+    const results = await Campaign.getAll();
+    this.data = await Promise.all(results.map((item) => item.getData().catch(() => undefined)));
   },
 };
 </script>

@@ -1,7 +1,7 @@
 import CRUDResource from '@/utils/CRUDResource';
 
 export default class Campaign extends CRUDResource {
-  static endpoint = 'https://5eb98bef4181540016932ca9.mockapi.io/campaigns';
+  static endpoint = `${process.env.VUE_APP_API}campaigns`;
 
   static operations = ['details'];
 

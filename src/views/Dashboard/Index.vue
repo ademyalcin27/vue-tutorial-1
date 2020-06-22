@@ -3,6 +3,7 @@
     <DataTable
       :data-headers="headers"
       :data="data"
+      :title="`${$tc(`models.Campaign.translation`)} ${$t('common.listing')}`"
       :actions="actions"
       url="campaign"
       @delete="deleteItem"
@@ -28,9 +29,11 @@ export default {
       return Campaign.operations;
     },
     headers() {
-      return Campaign.getListFields().map(({ name, ...rest }) => ({
+      return Campaign.getListFields().map(({ name, relatedModel, ...rest }) => ({
         ...rest,
-        text: translateModelProperty(Campaign.name, name),
+        text: relatedModel
+          ? this.$tc(`models.${relatedModel.name}.translation`)
+          : translateModelProperty(Campaign.name, name),
         value: name,
       }));
     },

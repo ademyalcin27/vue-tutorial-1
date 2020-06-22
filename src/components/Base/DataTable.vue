@@ -4,7 +4,7 @@
       <v-card-title>
         <v-row>
           <v-col cols="8">
-            Title
+            {{ title }}
           </v-col>
           <v-col cols="4" class="text-right">
             <v-btn color="secondary" to="/" v-if="actions.includes('create')">
@@ -97,6 +97,7 @@ export default {
     data: Array,
     actions: Array,
     url: String,
+    title: String,
   },
   components: {
     TextView: () => import('@/components/DataTableViews/TextView.vue'),

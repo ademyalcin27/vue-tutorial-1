@@ -9,8 +9,11 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "dependencies": {
+    "@babel/parser": "^7.7.5",
+    "@babel/polyfill": "^7.4.4",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
+    "pluralize": "^8.0.0",
     "vue": "^2.6.11",
     "vue-i18n": "^8.17.3",
     "vue-router": "^3.2.0",

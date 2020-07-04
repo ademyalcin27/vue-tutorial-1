@@ -4,15 +4,7 @@ module.exports = {
     node: true,
     es6: true,
   },
-  extends: ['plugin:vue/strongly-recommended', 'eslint:recommended', 'plugin:prettier-vue/recommended', '@vue/airbnb'],
-  settings: {
-    'prettier-vue': {
-      // ignoring template tag
-      SFCBlocks: {
-        template: false,
-      },
-    },
-  },
+  extends: ['plugin:vue/essential', '@vue/airbnb'],
   parserOptions: {
     parser: 'babel-eslint',
     ecmaVersion: 2020,
@@ -45,13 +37,5 @@ module.exports = {
       },
     ],
     'object-curly-newline': 0,
-    'prettier-vue/prettier': [
-      'warn',
-      {
-        singleQuote: true,
-        trailingComma: 'all',
-        printWidth: 120,
-      },
-    ],
   },
 };

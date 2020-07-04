@@ -1,7 +1,30 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import * as Models from '@/api/index';
 
 Vue.use(VueRouter);
+
+function resourceRoutes(name, model) {
+  return [
+    {
+      crudKey: 'list',
+      name: `${name} Liste`,
+      path: model.route,
+      component: () => import(`@/views/Dashboard/${name}/Index.vue`),
+      props: { model },
+    },
+  ];
+}
+
+const modelRoutes = Object.entries(Models)
+  .map(([name, model]) => (
+    resourceRoutes(
+      name,
+      model,
+    ).filter(({ crudKey }) => model.operations.includes(crudKey))
+  ));
+
+console.log(modelRoutes);
 
 const routes = [
   {
@@ -11,13 +34,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "home" */ '../views/Index.vue'),
-    children: [
-      {
-        path: '/',
-        name: 'Dashboard',
-        component: () => import(/* webpackChunkName: "Dashboard" */ '../views/Dashboard/Index.vue'),
-      },
-    ],
+    children: modelRoutes.flat(),
   },
 ];
 

@@ -3,9 +3,9 @@
     <DataTable
       :data-headers="headers"
       :data="data"
-      :title="`${$tc(`models.Campaign.translation`)} ${$t('common.listing')}`"
+      :title="`${$tc(`models.Promotion.translation`)} ${$t('common.listing')}`"
       :actions="actions"
-      url="campaign"
+      url="promotions"
       @delete="deleteItem"
     />
   </div>
@@ -13,7 +13,7 @@
 
 <script>
 import { translateModelProperty } from '@/utils/helper';
-import Campaign from '@/api/Campaign';
+import Promotion from '@/api/Promotion';
 
 export default {
   components: {
@@ -26,14 +26,14 @@ export default {
   },
   computed: {
     actions() {
-      return Campaign.operations;
+      return Promotion.operations;
     },
     headers() {
-      return Campaign.getListFields().map(({ name, relatedModel, ...rest }) => ({
+      return Promotion.getListFields().map(({ name, relatedModel, ...rest }) => ({
         ...rest,
         text: relatedModel
           ? this.$tc(`models.${relatedModel.name}.translation`)
-          : translateModelProperty(Campaign.name, name),
+          : translateModelProperty(Promotion.name, name),
         value: name,
       }));
     },
@@ -44,7 +44,7 @@ export default {
     },
   },
   async created() {
-    const results = await Campaign.getAll();
+    const results = await Promotion.getAll();
     this.data = await Promise.all(results.map((item) => item.getData().catch(() => undefined)));
   },
 };

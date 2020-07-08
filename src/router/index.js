@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import * as Models from '@/api/index';
+import { resolveCRUDComponent } from '@/utils/helper';
 
 Vue.use(VueRouter);
 
@@ -10,7 +11,8 @@ function resourceRoutes(name, model) {
       crudKey: 'list',
       name: `${name} Liste`,
       path: model.route,
-      component: () => import(`@/views/Dashboard/${name}/Index.vue`),
+      // component: () => import(`@/views/Dashboard/${name}/Index.vue`),
+      component: resolveCRUDComponent(name, 'list'),
       props: { model },
     },
   ];

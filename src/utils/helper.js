@@ -18,3 +18,17 @@ export function translateModelProperty(name, property) {
 export function firstLetterToLowerCase(str) {
   return `${str[0].toLowerCase()}${str.slice(1)}`;
 }
+
+export function resolveCRUDComponent(name, operation) {
+  const operationToFileMapping = {
+    list: 'Index',
+    details: 'Details',
+    create: 'Create',
+    update: 'Edit',
+  };
+  const targetFile = operationToFileMapping[operation];
+
+  return () => import(`@/views/Dashboard/${name}/${targetFile}.vue`)
+    .then((res) => res)
+    .catch(() => import(`@/views/CRUD/${targetFile}.vue`));
+}

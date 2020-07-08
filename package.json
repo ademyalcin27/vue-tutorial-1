@@ -21,6 +21,7 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@intlify/vue-i18n-loader": "^1.0.0",
     "@mdi/font": "^5.3.45",
     "@vue/cli-plugin-babel": "~4.4.0",

@@ -1,5 +1,5 @@
 import CRUDResource from '@/utils/CRUDResource';
-import Promotions from '@/api/Promotions';
+import Promotion from '@/api/Promotion';
 
 export default class Campaign extends CRUDResource {
   static endpoint = `${process.env.VUE_APP_API}campaigns`;
@@ -12,7 +12,7 @@ export default class Campaign extends CRUDResource {
 
   static fields = [
     { name: 'id', type: 'text' },
-    { name: 'promotionId', type: 'number', relatedModel: Promotions },
+    { name: 'promotionId', type: 'number', relatedModel: Promotion },
     { name: 'name', type: 'text' },
     { name: 'slug', type: 'text' },
     { name: 'description', type: 'text' },

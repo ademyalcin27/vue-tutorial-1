@@ -37,5 +37,7 @@ module.exports = {
       },
     ],
     'object-curly-newline': 0,
+    'indent': ['error', 2],
+    'vue/html-indent': ['error', 2],
   },
 };

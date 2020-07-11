@@ -16,7 +16,7 @@ export default class Campaign extends CRUDResource {
     { name: 'name', type: 'text' },
     { name: 'slug', type: 'text' },
     { name: 'description', type: 'text' },
-    { name: 'image', type: 'image', hideFromList: true },
+    { name: 'image', type: 'image', hide: true },
     { name: 'startDate', type: 'date', hideFromList: true },
     { name: 'endDate', type: 'date', hideFromList: true },
   ];

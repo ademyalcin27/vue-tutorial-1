@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+  name: 'NumberView',
   props: {
     data: [String, Number],
   },

@@ -11,8 +11,14 @@ function resourceRoutes(name, model) {
       crudKey: 'list',
       name: `${name} Liste`,
       path: model.route,
-      // component: () => import(`@/views/Dashboard/${name}/Index.vue`),
       component: resolveCRUDComponent(name, 'list'),
+      props: { model },
+    },
+    {
+      crudKey: 'details',
+      name: `${name} Details`,
+      path: `${model.route}/:id`,
+      component: resolveCRUDComponent(name, 'details'),
       props: { model },
     },
   ];

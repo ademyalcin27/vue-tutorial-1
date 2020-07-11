@@ -25,7 +25,17 @@ export default class CRUDResource {
   }
 
   static getListFields() {
-    return this.fields.filter(({ hideFromList }) => !hideFromList);
+    return this.fields.filter(({ hide, hideFromList }) => !(hide || hideFromList));
+  }
+
+  static getDetailsFields() {
+    return this.fields.filter(({ hide, hideFromDetails }) => !(hide || hideFromDetails))
+      .map((field) => ({
+        ...field,
+        type: field.relatedModel
+          ? field.relatedModel.getRepresentationField().type
+          : field.type,
+      }));
   }
 
   static getRepresentationField() {

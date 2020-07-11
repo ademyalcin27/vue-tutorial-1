@@ -19,6 +19,10 @@ export function firstLetterToLowerCase(str) {
   return `${str[0].toLowerCase()}${str.slice(1)}`;
 }
 
+export function firstLetterToUpperCase(str) {
+  return `${str[0].toUpperCase()}${str.slice(1)}`;
+}
+
 export function resolveCRUDComponent(name, operation) {
   const operationToFileMapping = {
     list: 'Index',

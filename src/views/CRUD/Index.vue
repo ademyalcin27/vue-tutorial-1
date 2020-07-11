@@ -3,9 +3,9 @@
     <DataTable
       :data-headers="headers"
       :data="data"
-      :title="`${$tc(`models.Promotion.translation`)} ${$t('common.listing')}`"
+      :title="`${$tc(`models.${model.name}.translation`)} ${$t('common.listing')}`"
       :actions="actions"
-      url="promotions"
+      :url="model.route"
       @delete="deleteItem"
     />
   </div>
@@ -13,9 +13,11 @@
 
 <script>
 import { translateModelProperty } from '@/utils/helper';
-import Promotion from '@/api/Promotion';
 
 export default {
+  props: {
+    model: Function,
+  },
   components: {
     DataTable: () => import('@/components/Base/DataTable.vue'),
   },
@@ -26,14 +28,14 @@ export default {
   },
   computed: {
     actions() {
-      return Promotion.operations;
+      return this.model.operations;
     },
     headers() {
-      return Promotion.getListFields().map(({ name, relatedModel, ...rest }) => ({
+      return this.model.getListFields().map(({ name, relatedModel, ...rest }) => ({
         ...rest,
         text: relatedModel
           ? this.$tc(`models.${relatedModel.name}.translation`)
-          : translateModelProperty(Promotion.name, name),
+          : translateModelProperty(this.model.name, name),
         value: name,
       }));
     },
@@ -44,7 +46,7 @@ export default {
     },
   },
   async created() {
-    const results = await Promotion.getAll();
+    const results = await this.model.getAll();
     this.data = await Promise.all(results.map((item) => item.getData().catch(() => undefined)));
   },
 };

@@ -7,8 +7,8 @@
             {{ title }}
           </v-col>
           <v-col cols="4" class="text-right">
-            <v-btn color="secondary" to="/" v-if="actions.includes('create')">
-              Add
+            <v-btn color="secondary" :to="`${url}/new`" v-if="actions.includes('create')">
+              {{ $t('common.buttons.add') }}
             </v-btn>
           </v-col>
           <v-col cols="12">

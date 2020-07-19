@@ -4,8 +4,6 @@ import Promotion from '@/api/Promotion';
 export default class Campaign extends CRUDResource {
   static endpoint = `${process.env.VUE_APP_API}campaigns`;
 
-  static operations = ['details', 'list'];
-
   constructor(data) {
     super(Campaign.fields, data);
   }

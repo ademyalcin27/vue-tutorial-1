@@ -15,7 +15,7 @@ export default new Vuetify({
         primary: colors.pink.darken1,
       },
       light: {
-        primary: '#fff',
+        primary: colors.pink.darken1,
       },
     },
   },

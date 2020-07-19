@@ -56,3 +56,15 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+  .v-list-item--active {
+    &:before {
+      background-color: #fff;
+      opacity: 0.08;
+    }
+
+  }
+  .v-list-item__title {
+    color: #fff !important;
+  }
+</style>

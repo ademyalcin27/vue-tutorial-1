@@ -15,6 +15,14 @@ function resourceRoutes(name, model) {
       props: { model },
     },
     {
+      crudKey: 'create',
+      name: `${name} Create`,
+      path: `${model.route}/new`,
+      component: resolveCRUDComponent(name, 'create'),
+      // props: { model },
+      meta: { requiresAuth: true },
+    },
+    {
       crudKey: 'details',
       name: `${name} Details`,
       path: `${model.route}/:id`,

@@ -4,7 +4,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
-
+import './plugins/vee-validate'; // Validation
 import '@/utils/filters';
 
 Vue.config.productionTip = false;
